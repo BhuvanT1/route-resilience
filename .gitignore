@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# --- Data: NEVER commit imagery. A single Sentinel-2 tile is ~1 GB and will
+# --- destroy the repo history permanently. Keep only manifests and configs.
+data/raw/**
+data/interim/**
+data/processed/**
+data/external/**
+data/osm/*.gpkg
+!data/**/.gitkeep
+!data/**/manifest.json
+!data/**/README.md
+
+# Model artefacts
+checkpoints/**
+!checkpoints/.gitkeep
+*.pt
+*.pth
+*.onnx
+runs/
+lightning_logs/
+
+# Outputs
+outputs/**
+!outputs/.gitkeep
+
+# Secrets
+.env
+*.key
+credentials.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
