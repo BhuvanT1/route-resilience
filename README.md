@@ -1,14 +1,35 @@
 # Route Resilience AI
 
+[![CI](https://github.com/BhuvanT1/route-resilience/actions/workflows/ci.yml/badge.svg)](https://github.com/BhuvanT1/route-resilience/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+![Python 3.11–3.13](https://img.shields.io/badge/python-3.11%E2%80%933.13-blue.svg)
+
 **Occlusion-Robust Road Extraction & Graph-Theoretic Criticality Analysis for Urban Mobility**
 
 Satellite imagery → road mask → routable graph → criticality → failure simulation → decision support.
 
 Aligned to ISRO/NNRMS downstream utilisation of Sentinel-2, Resourcesat LISS-IV and Cartosat-3.
 
+## Results at a glance
+
+| | |
+|---|---|
+| **Road segmentation** (U-Net R34, DeepGlobe held-out test) | IoU **0.619** · clDice **0.843** · recall 0.860 |
+| vs classical Frangi baseline | IoU 0.065 (**+0.554**) |
+| Overfitting check | val–test IoU gap −0.015; rerun reproduced within 0.002 IoU |
+| **Occlusion** (498 tiles, tree canopy) | ΔIoU −0.025, occluded-region recall 0.86 |
+| **Topology healing** (MST + loop pass vs MST only) | redundancy α 0.075 vs 0.018 (ground truth 0.132) |
+| Tests | 49 core + 44 API + 89 contract + 27 metric checks, all run in CI |
+
+Only the canopy occlusion result is claimed; two other occluder types still
+score above the unoccluded control and are treated as an open bug. Details in
+[Results so far](#results-so-far) and [Limitations](#limitations).
+
 ---
 
 ## Run it
+
+Python 3.11–3.13, Node 20.
 
 ```bash
 # 1. backend (CPU only; no CUDA, no GDAL required)

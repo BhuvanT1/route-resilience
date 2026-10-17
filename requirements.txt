@@ -24,17 +24,12 @@ matplotlib>=3.8,<4.0
 PyYAML>=6.0
 tqdm>=4.66
 
-# --- dashboard ---
-streamlit>=1.31,<2.0
-folium>=0.15,<1.0            # Leaflet.js bindings for the map view
-streamlit-folium>=0.18,<1.0  # bridges folium maps into Streamlit with click events
-plotly>=5.18,<7.0            # interactive robustness / ablation curves
-
-# --- config ---
-hydra-core>=1.3,<2.0
-omegaconf>=2.3,<3.0
-python-dotenv>=1.0
-loguru>=0.7
+# The old Streamlit dashboard (streamlit, folium, plotly), the Hydra config stack
+# (hydra-core, omegaconf), loguru and python-dotenv were removed: nothing imports
+# them any more, the
+# dashboard is the React app in frontend/, and hydra-core pulls in
+# antlr4-python3-runtime, which ships only as an sdist and can fail to build on
+# Python 3.13.
 
 # --- API server (backend/) ---
 fastapi>=0.110,<1.0
