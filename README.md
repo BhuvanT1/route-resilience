@@ -335,8 +335,6 @@ targeted damage exceeds random damage.
 
 ## Team
 
-VIT-AP University capstone project (Fall 2026), guided by **Dr. Priyanka Singh**.
-
 | Member | Owns |
 |---|---|
 | **Themballi Bhuvan** (lead) | segmentation model and occlusion work (Layer 3) |
